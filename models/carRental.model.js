@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import db from '../database/connection.js';
+import sequelizeAuth from '../database/connection.js';
 
-const Rental = db.define('Rental', {
+const Rental = sequelizeAuth.define('Rental', {
   fromDate: {
     type: DataTypes.DATEONLY,
     allowNull: true,

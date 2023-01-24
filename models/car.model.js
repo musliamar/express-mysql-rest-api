@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import db from '../database/connection.js';
+import sequelizeAuth from '../database/connection.js';
 
-const Car = db.define('Car', {
+const Car = sequelizeAuth.define('Car', {
   chassisNumber: {
     type: DataTypes.STRING,
     allowNull: true,

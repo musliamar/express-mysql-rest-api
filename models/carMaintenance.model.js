@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import db from '../database/connection.js';
+import sequelizeAuth from '../database/connection.js';
 
-const Repair = db.define('Repair', {
+const Repair = sequelizeAuth.define('Repair', {
   descOfRepair: {
     type: DataTypes.STRING,
     allowNull: true,

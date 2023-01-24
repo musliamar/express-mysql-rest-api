@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import db from '../database/connection.js';
+import sequelizeAuth from '../database/connection.js';
 
-const Client = db.define('Client', {
+const Client = sequelizeAuth.define('Client', {
   idNumber: {
     type: DataTypes.STRING,
     allowNull: false,
