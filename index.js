@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dbConnection from './database/sync.js';
+import carRoutes from './routes/car.routes.js';
+import clientRoutes from './routes/client.routes.js';
+import employeeRoutes from './routes/employee.routes.js';
 
 const app = express();
 const port = process.env.EXPRESS_PORT;
@@ -17,3 +20,6 @@ dbConnection();
 
 app.use(cors());
 app.use(express.json());
+app.use('/employees', employeeRoutes);
+app.use('/clients', clientRoutes);
+app.use('/cars', carRoutes);

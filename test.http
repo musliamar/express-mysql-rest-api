@@ -1,0 +1,15 @@
+
+GET http://localhost:3300/employees
+content-type: application/json
+
+{
+    "chassisNumber": "amar",
+    "manufacturer": "VWtest",
+    "model": "Golftest",
+    "yearOfProduction": 2015,
+    "mileage": 156321,
+    "typeOfCar": "Hatchbacktest",
+    "typeOfFuel": "Dieseltest",
+    "firstRegistrationDate": "2015-09-16",
+    "currentlyRentedToClientId": null
+    }
