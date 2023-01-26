@@ -1,15 +1,15 @@
 
-GET http://localhost:3300/employees
+POST http://localhost:3300/cars
 content-type: application/json
 
 {
-    "chassisNumber": "amar",
-    "manufacturer": "VWtest",
-    "model": "Golftest",
+    "chassisNumber": "amar2",
+    "manufacturer": "VWtest2",
+    "model": "Golftes2t",
     "yearOfProduction": 2015,
     "mileage": 156321,
-    "typeOfCar": "Hatchbacktest",
-    "typeOfFuel": "Dieseltest",
+    "typeOfCar": "Hatchbacktest2",
+    "typeOfFuel": "Dieseltes2t",
     "firstRegistrationDate": "2015-09-16",
     "currentlyRentedToClientId": null
     }

@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelizeAuth from '../database/connection.js';
+import { sequelizeAuth } from '../database/connection.js';
 
 const Employee = sequelizeAuth.define('Employee', {
   firstName: {

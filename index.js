@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import dbConnection from './database/sync.js';
+import connection from './database/connection.js';
 import carRoutes from './routes/car.routes.js';
 import clientRoutes from './routes/client.routes.js';
 import employeeRoutes from './routes/employee.routes.js';
@@ -16,7 +16,7 @@ app.listen(port, () => {
   console.log(`Rent-a-car backend app listening on port ${port}`);
 });
 
-dbConnection();
+connection();
 
 app.use(cors());
 app.use(express.json());

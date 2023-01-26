@@ -10,14 +10,19 @@ const [host, port, user, password, database] = [
   process.env.MARIADB_DATABASE,
 ];
 
-const connection = await mariadb.createConnection({
+const dbConnection = await mariadb.createConnection({
   host, port, user, password,
 });
-const sequelizeAuth = new Sequelize(database, user, password, { host, dialect: 'mariadb' });
 
-export const createIfNotExists = async () => {
-  await connection.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
+export const sequelizeAuth = new Sequelize(database, user, password, { host, dialect: 'mariadb' });
+
+const connection = async () => {
+  await dbConnection.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
   console.log('MariaDB: Database created or already exists.');
+  await sequelizeAuth.authenticate();
+  console.log('Sequelize connection has been established successfully.');
+  await sequelizeAuth.sync({ alter: true });
+  console.log('All models were synchronized successfully.');
 };
 
-export default sequelizeAuth;
+export default connection;
