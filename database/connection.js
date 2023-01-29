@@ -1,6 +1,27 @@
-import 'dotenv/config';
-import { Sequelize } from 'sequelize';
 import mariadb from 'mariadb';
+import Car from '../models/car.model.js';
+import Client from '../models/client.model.js';
+import Repair from '../models/carMaintenance.model.js';
+import Rental from '../models/carRental.model.js';
+import sequelizeAuth from './sequelizeAuth.js';
+
+Client.hasMany(Car, {
+  foreignKey: 'currentlyRentedToClientId',
+  allowNull: true,
+  defaultValue: null,
+});
+
+Client.hasMany(Rental, {
+  foreignKey: 'rentedToClientId',
+});
+
+Car.hasMany(Repair, {
+  foreignKey: 'idOfRepairedCar',
+});
+
+Car.hasMany(Rental, {
+  foreignKey: 'idOfRentedCar',
+});
 
 const [host, port, user, password, database] = [
   process.env.MARIADB_HOST,
@@ -13,8 +34,6 @@ const [host, port, user, password, database] = [
 const dbConnection = await mariadb.createConnection({
   host, port, user, password,
 });
-
-export const sequelizeAuth = new Sequelize(database, user, password, { host, dialect: 'mariadb' });
 
 const connection = async () => {
   await dbConnection.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
